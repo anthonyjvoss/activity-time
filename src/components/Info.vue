@@ -4,10 +4,15 @@
     </div>
 </template>
 
-<script setup>
-defineProps({
-  msg: String,
-})
+<script>
+export default {
+    props: {
+        msg: {
+            type: String,
+            default: ''
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -15,5 +20,6 @@ defineProps({
     background-color: lightgray;
     border-left: 6px solid gray;
     // width: max-content;
+    color: black;
 }
 </style>
