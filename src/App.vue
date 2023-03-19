@@ -7,7 +7,7 @@
     v-if="selected_activity"
     :activity-type="selected_activity"
     :activity-msg="activityData.msg"
-    :activity-list="activityData.activities"
+    :activity-data="activityData"
   />
 </template>
 
