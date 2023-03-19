@@ -6,16 +6,30 @@ const activityData = {
         activities: [
             {
                 id: 1,
-                name: 'Read a book'
+                name: 'Read a book',
+                tags: ['quiet', 'educational']
             },
             {
                 id: 2,
-                name: 'Sort Pokemon cards'
+                name: 'Sort Pokemon cards',
+                tags: []
             },
             {
                 id: 3,
-                name: 'Draw a picture'
+                name: 'Draw a picture',
+                tags: []
+            },
+            {
+              id: 4,
+              name: 'Play the piano',
+              tags: ['loud', 'creative']
+            },
+            {
+              id: 3,
+              name: 'Play the keyboard',
+              tags: ['quiet', 'creative']
             }
+
         ]
     },
     'Guided': {
@@ -23,15 +37,18 @@ const activityData = {
         activities: [
             {
                 id: 1,
-                name: 'Play a game'
+                name: 'Play a game',
+                tags: []
             },
             {
                 id: 2,
-                name: 'Build a puzzle'
+                name: 'Build a puzzle',
+                tags: []
             },
             {
                 id: 3,
-                name: 'Swim in the pool'
+                name: 'Swim in the pool',
+                tags: []
             }
         ]
     },
@@ -40,19 +57,23 @@ const activityData = {
         activities: [
             {
                 id: 1,
-                name: 'Bowling'
+                name: 'Bowling',
+                tags: []
             },
             {
                 id: 2,
-                name: 'Movie night'
+                name: 'Movie night',
+                tags: []
             },
             {
                 id: 3,
-                name: 'Trampoline park'
+                name: 'Trampoline park',
+                tags: []
             },
             {
                 id: 4,
-                name: 'Rollerblade at the park'
+                name: 'Rollerblade at the park',
+                tags: []
             }
         ]
     }
