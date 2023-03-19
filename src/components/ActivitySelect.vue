@@ -1,7 +1,10 @@
 <template>
     <div>
         <h2>Select an Activity Type</h2>
-        <select v-model="activity_selected">
+        <select 
+          v-model="activity_selected"
+          class="activity-select"
+        >
             <option disabled value="">Please select an activity type</option>
             <option value="Independent">Independent</option>
             <option value="Guided">Guided</option>
@@ -28,5 +31,9 @@
 <style lang="scss" scoped>
     option {
         color: black;
+    }
+
+    .activity-select {
+      font-size: 16px;
     }
 </style>
