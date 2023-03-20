@@ -12,12 +12,12 @@ const activityData = {
             {
                 id: 2,
                 name: 'Sort Pokemon cards',
-                tags: []
+                tags: ['quiet']
             },
             {
                 id: 3,
                 name: 'Draw a picture',
-                tags: []
+                tags: ['quiet']
             },
             {
               id: 4,
@@ -38,17 +38,17 @@ const activityData = {
             {
                 id: 1,
                 name: 'Play a game',
-                tags: []
+                tags: ['creative', 'educational']
             },
             {
                 id: 2,
                 name: 'Build a puzzle',
-                tags: []
+                tags: ['creative']
             },
             {
                 id: 3,
                 name: 'Swim in the pool',
-                tags: []
+                tags: ['motion']
             }
         ]
     },
@@ -58,22 +58,22 @@ const activityData = {
             {
                 id: 1,
                 name: 'Bowling',
-                tags: []
+                tags: ['motion']
             },
             {
                 id: 2,
                 name: 'Movie night',
-                tags: []
+                tags: ['relaxing']
             },
             {
                 id: 3,
                 name: 'Trampoline park',
-                tags: []
+                tags: ['motion']
             },
             {
                 id: 4,
                 name: 'Rollerblade at the park',
-                tags: []
+                tags: ['motion', 'outside']
             }
         ]
     }

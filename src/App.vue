@@ -3,7 +3,7 @@
     <h1 class="main-header">Cohen's Activity Time</h1>
   </div>
   <ActivitySelect @change="setActivity"/>
-  <Activity 
+  <ActivityList 
     v-if="selected_activity"
     :activity-type="selected_activity"
     :activity-msg="activityData.msg"
@@ -13,7 +13,7 @@
 
 <script>
 import ActivitySelect from './components/ActivitySelect.vue'
-import Activity from './components/Activity.vue'
+import ActivityList from './components/ActivityList.vue'
 import dataService from './services/dataService'
 
 export default {
@@ -25,7 +25,7 @@ export default {
   },
   components: {
     ActivitySelect,
-    Activity
+    ActivityList
   },
   methods: {
     setActivity (val) {
