@@ -2,11 +2,14 @@
   <div>
     <h1 class="main-header">Cohen's Activity Time</h1>
   </div>
-  <ActivitySelect @change="setActivity"/>
+  <ActivitySelect 
+    @change="setActivity"
+    :activity-types="activityTypes"
+  />
   <ActivityList 
     v-if="selected_activity"
     :activity-type="selected_activity"
-    :activity-msg="activityData.msg"
+    :activity-msg="activityMsg"
     :activity-data="activityData"
   />
 </template>
@@ -15,22 +18,47 @@
 import ActivitySelect from './components/ActivitySelect.vue'
 import ActivityList from './components/ActivityList.vue'
 import dataService from './services/dataService'
+import _ from 'lodash'
 
 export default {
   data () {
     return {
      selected_activity: '',
-     activityData: {}
+     activityData: {},
+     allData: {},
+     activityTypes: []
     }
   },
   components: {
     ActivitySelect,
     ActivityList
   },
+  async created() {
+    try{
+      this.allData = await dataService.getActivityData()
+      this.activityTypes = Array.from(new Set(this.allData.map(d => d.type)))
+    } catch(err) {
+      console.error(err)
+    }
+  },
+  computed: {
+    activityMsg() {
+      switch(this.selected_activity) {
+        case 'Independent':
+          return 'Activities that I can do by myself.'
+        case 'Guided':
+          return 'Activites that I can do with someone.'
+        case 'Parent Night':
+          return 'Activities that I can do on parent night.'
+      }
+    }
+  },
   methods: {
     setActivity (val) {
       this.selected_activity = val.target.value
-      this.activityData = dataService.getActivityData(this.selected_activity)
+      this.activityData = this.allData.filter(activity => {
+        return activity.type === this.selected_activity
+      })
     }
   }
 }

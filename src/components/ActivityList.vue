@@ -7,7 +7,7 @@
           class="activity-search"
         />
         <div 
-          v-for="activity in activityData.activities" 
+          v-for="activity in activityData" 
           :key="activity.id"
           class="activity-wrapper"
         >
@@ -34,8 +34,8 @@ export default {
             default: ''
         },
         activityData: {
-            type: Object,
-            default: {}
+            type: Array,
+            default: []
         }
     },
     components: {

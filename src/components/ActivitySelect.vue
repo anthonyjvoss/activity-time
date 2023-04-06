@@ -6,9 +6,9 @@
           class="activity-select"
         >
             <option disabled value="">Please select an activity type</option>
-            <option value="Independent">Independent</option>
-            <option value="Guided">Guided</option>
-            <option value="Parent Night">Parent Night</option>
+            <option v-for="type in activityTypes" :key="type" :value="type">
+              {{ type }}
+            </option>
         </select>
     </div>
 </template>
@@ -16,8 +16,9 @@
 <script>
     export default {
         props: {
-            activityType: {
-                type: String
+            activityTypes: {
+                type: Array,
+                default: []
             }
         },
         data() {
