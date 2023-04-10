@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="main-header">Cohen's Activity Time</h1>
+    <h1 class="main-header">Activity Time</h1>
   </div>
   <ActivitySelect 
     @change="setActivity"
