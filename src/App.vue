@@ -12,6 +12,7 @@
     :activity-msg="activityMsg"
     :activity-data="activityData"
     :activity-tags="activityTags"
+    :key="selected_activity"
   />
 </template>
 
