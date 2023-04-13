@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="main-header">Cohen's Activity Time</h1>
+    <h1 class="main-header">Activity Time</h1>
   </div>
   <ActivitySelect 
     @change="setActivity"
@@ -11,6 +11,7 @@
     :activity-type="selected_activity"
     :activity-msg="activityMsg"
     :activity-data="activityData"
+    :activity-tags="activityTags"
   />
 </template>
 
@@ -26,7 +27,8 @@ export default {
      selected_activity: '',
      activityData: {},
      allData: {},
-     activityTypes: []
+     activityTypes: [],
+     activityTags: []
     }
   },
   components: {
@@ -37,6 +39,7 @@ export default {
     try{
       this.allData = await dataService.getActivityData()
       this.activityTypes = Array.from(new Set(this.allData.map(d => d.type)))
+      this.activityTags = await dataService.getActivityTags()
     } catch(err) {
       console.error(err)
     }
