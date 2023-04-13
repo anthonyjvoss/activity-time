@@ -13,7 +13,7 @@
     >
       <ActivityTagPill 
         v-for="tag in tagList"
-        :key="tag"
+        :key="tag.id"
         :tag-label="tag.tagName"
         :tag-color="tag.tagColor"
         variant="dot"

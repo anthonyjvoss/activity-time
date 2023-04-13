@@ -11,13 +11,14 @@
         >
           <ActivityTagPill 
             v-for="tag in tagList"
-            :key="tag"
+            :key="tag.id"
             :tag-label="tag.tagName"
             :tag-color="tag.tagColor"
+            @selected="toggleTagFilters"
           />
         </div>
         <div 
-          v-for="activity in activityData" 
+          v-for="activity in filterSearch" 
           :key="activity.id"
           class="activity-wrapper"
         >
@@ -62,7 +63,8 @@ export default {
     },
     data() {
       return {
-        searchTerm: ''
+        searchTerm: '',
+        tagFilters: []
       }
     },
     computed: {
@@ -73,6 +75,27 @@ export default {
         })
 
         return tagData || []
+      },
+      filterSearch() {
+        if (this.tagFilters.length) {
+          return this.activityData.filter(activity => {
+            return activity.tags.some(t => this.tagFilters.indexOf(t) >= 0)
+          })
+        } else {
+          return this.activityData
+        }
+      }
+    },
+    methods: {
+      toggleTagFilters(e) {
+        let tagName = e.tagName
+        let selected = e.selected
+        if (!selected && this.tagFilters.includes(tagName)) {
+          let index = this.tagFilters.indexOf(tagName)
+          this.tagFilters.splice(index, 1)
+        } else if (selected && !this.tagFilters.includes(tagName)) {
+          this.tagFilters.push(tagName)
+        }
       }
     }
 }
