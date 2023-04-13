@@ -23,6 +23,7 @@
         >
             <ActivityCard 
               :activity="activity"
+              :activity-tags="activityTags"
             />
         </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-wrapper">
     <div
       class="activity-name"
     >
@@ -12,9 +12,11 @@
       v-if="activity.tags.length"
     >
       <ActivityTagPill 
-        v-for="tag in activity.tags"
+        v-for="tag in tagList"
         :key="tag"
-        :tagLabel="tag"
+        :tag-label="tag.tagName"
+        :tag-color="tag.tagColor"
+        variant="dot"
       />
     </div>
   </div>
@@ -29,10 +31,27 @@ export default {
     activity: {
       type: Object,
       default: {}
+    },
+    activityTags: {
+      type: Array,
+      default: []
     }
   },
   components: {
     ActivityTagPill
+  },
+  computed: {
+    tagList() {
+      let tagData = []
+      for (let tag of this.activity.tags) {
+        let d = this.activityTags.find(t => {
+          return t.tagName === tag
+        })
+        if (d) tagData.push(d)
+      }
+
+      return tagData || []
+    }
   }
 };
 </script>
@@ -51,6 +70,13 @@ export default {
 
 .activity-tags {
   display: flex;
+  justify-content: center;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
 }
 </style>

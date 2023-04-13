@@ -2,11 +2,11 @@
   <button
     type="button"
     class="tag"
-    :class="{selected: isSelected}"
+    :class="{selected: isSelected, dot: variant === 'dot'}"
     @click="toggleSelected"
     :style="tagStyles"
   >
-    {{ tagLabel }}
+    {{ variant !== 'dot' ? tagLabel : '' }}
   </button>
 </template>
 
@@ -42,7 +42,7 @@ export default {
         border: `${this.tagColor} 1px solid`
       }
 
-      if (this.isSelected) {
+      if (this.isSelected || this.variant === 'dot') {
         style['background-color'] = this.tagColor
       } else {
         style['background-color'] = '#1a1a1a'
@@ -69,7 +69,10 @@ export default {
   background-color: #1a1a1a;
 }
 
-.selected {
-  // background-color: 
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
 }
 </style>
