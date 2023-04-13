@@ -11,6 +11,8 @@
     :activity-type="selected_activity"
     :activity-msg="activityMsg"
     :activity-data="activityData"
+    :activity-tags="activityTags"
+    :key="selected_activity"
   />
 </template>
 
@@ -26,7 +28,8 @@ export default {
      selected_activity: '',
      activityData: {},
      allData: {},
-     activityTypes: []
+     activityTypes: [],
+     activityTags: []
     }
   },
   components: {
@@ -37,6 +40,7 @@ export default {
     try{
       this.allData = await dataService.getActivityData()
       this.activityTypes = Array.from(new Set(this.allData.map(d => d.type)))
+      this.activityTags = await dataService.getActivityTags()
     } catch(err) {
       console.error(err)
     }

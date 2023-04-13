@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <button  
-      class="tag"
-      :style="tagBorderStyle"
-      >
-        {{ tagLabel }}
-      </button>
-  </div>
+  <button
+    type="button"
+    class="tag"
+    :value="tagLabel"
+    :class="{selected: isSelected, dot: variant === 'dot'}"
+    @click="toggleSelected"
+    :style="tagStyles"
+  >
+    {{ variant !== 'dot' ? tagLabel : '' }}
+  </button>
 </template>
 
 <script>
@@ -16,28 +18,47 @@ export default {
     tagLabel: {
       type: String,
       default: ''
+    },
+    showClose: {
+      type: Boolean,
+      default: false
+    },
+    tagColor: {
+      type: String,
+      default: ''
+    },
+    variant: {
+      type: String,
+      default: 'button'
+    }
+  },
+  data() {
+    return {
+      isSelected: false
     }
   },
   computed: {
-    tagBorderStyle() {
-      switch(this.tagLabel) {
-        case 'quiet':
-          return 'border: lightseagreen 1px solid'
-        case 'loud':
-          return 'border: #CC5500 1px solid'
-        case 'creative':
-          return 'border: #B87333 1px solid'
-        case 'educational':
-          return 'border: #808000 1px solid'
-        case 'motion':
-          return 'border: #BF40BF 1px solid'
-        case 'outside':
-          return 'border: #954535 1px solid'
-        case 'relaxing':
-          return 'border: #6F8FAF 1px solid'
-        default:
-          return ''
+    tagStyles() {
+      let style = {
+        border: `${this.tagColor} 1px solid`
       }
+
+      if (this.isSelected || this.variant === 'dot') {
+        style['background-color'] = this.tagColor
+      } else {
+        style['background-color'] = '#1a1a1a'
+      }
+
+      return style
+    }
+  },
+  methods: {
+    toggleSelected(e) {
+      this.isSelected = !this.isSelected
+      this.$emit('selected', {
+        tagName: e.target.value,
+        selected: this.isSelected
+      })
     }
   }
 };
@@ -47,8 +68,16 @@ export default {
 .tag {
   border-radius: 16px;
   text-align: center;
-  padding: 5px 10px;
+  padding: 0px 5px;
   margin: 0 2px;
   font-size: 12px;
+  background-color: #1a1a1a;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
 }
 </style>

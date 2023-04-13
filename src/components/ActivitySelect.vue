@@ -6,8 +6,8 @@
           class="activity-select"
         >
             <option disabled value="">Please select an activity type</option>
-            <option v-for="type in activityTypes" :key="type" :value="type">
-              {{ type }}
+            <option v-for="actType in activityTypes" :key="actType" :value="actType">
+              {{ actType }}
             </option>
         </select>
     </div>
