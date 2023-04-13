@@ -1,12 +1,7 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabase } from '../lib/supabaseClient'
 
-async function getActivityData () {
-  const supabaseAdmin = createClient(
-    import.meta.env.VITE_PUBLIC_SUPABASE_URL || '',
-    import.meta.env.VITE_PUBLIC_SUPABASE_KEY || ''
-  )
-
-  const { data: activities } = await supabaseAdmin
+async function getActivityData() {
+  const { data: activities } = await supabase
     .from('activities')
     .select('*')
     .order('id')
@@ -14,6 +9,15 @@ async function getActivityData () {
   return activities
 }
 
+async function getActivityTags() {
+  const { data: activityTags } = await supabase
+    .from('activityTags')
+    .select('*')
+
+  return activityTags
+}
+
 export default {
-    getActivityData
+    getActivityData,
+    getActivityTags
 }
