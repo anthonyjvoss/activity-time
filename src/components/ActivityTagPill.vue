@@ -2,6 +2,7 @@
   <button
     type="button"
     class="tag"
+    :value="tagLabel"
     :class="{selected: isSelected, dot: variant === 'dot'}"
     @click="toggleSelected"
     :style="tagStyles"
@@ -52,8 +53,12 @@ export default {
     }
   },
   methods: {
-    toggleSelected() {
+    toggleSelected(e) {
       this.isSelected = !this.isSelected
+      this.$emit('selected', {
+        tagName: e.target.value,
+        selected: this.isSelected
+      })
     }
   }
 };
