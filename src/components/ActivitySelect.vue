@@ -36,5 +36,6 @@
 
     .activity-select {
       font-size: 16px;
+      color: #FFFFFF;
     }
 </style>
