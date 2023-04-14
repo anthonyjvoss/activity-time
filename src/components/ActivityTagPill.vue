@@ -72,6 +72,7 @@ export default {
   margin: 0 2px;
   font-size: 12px;
   background-color: #1a1a1a;
+  color: #FFFFFF;
 }
 
 .dot {
