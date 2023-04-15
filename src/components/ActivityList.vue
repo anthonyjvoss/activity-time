@@ -4,7 +4,7 @@
         <Info :msg="activityMsg" />
         <div class="search-container">
           <SearchInput 
-            v-bind="searchTerm"
+            @input="setSearchTerm"
             class="activity-search"
           />
           <img 
@@ -26,6 +26,13 @@
           />
         </div>
         <div 
+          v-if="!filterSearch.length"
+          class="empty-state"
+        >
+          No activities match selected tags or search
+        </div>
+        <div 
+          v-else  
           v-for="activity in filterSearch" 
           :key="activity.id"
           class="activity-wrapper"
@@ -47,6 +54,7 @@
 </template>
 
 <script>
+import _debounce from 'lodash/debounce'
 import Info from './Info.vue'
 import ActivityCard from './ActivityCard.vue'
 import ActivityTagPill from './ActivityTagPill.vue'
@@ -97,12 +105,26 @@ export default {
         return tagData || []
       },
       filterSearch() {
+        let doSearch = this.searchTerm !== ''
         if (this.tagFilters.length) {
-          return this.activityData.filter(activity => {
+          let filteredActivities = this.activityData.filter(activity => {
             return activity.tags.some(t => this.tagFilters.indexOf(t) >= 0)
           })
+          if (doSearch) {
+            return filteredActivities.filter(t => {
+              return t.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+            })
+          } else {
+            return filteredActivities
+          }
         } else {
-          return this.activityData
+          if (doSearch) {
+            return this.activityData.filter(t => {
+              return t.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+            })
+          } else {
+            return this.activityData
+          }
         }
       }
     },
@@ -131,7 +153,10 @@ export default {
         let randomActivity = this.filterSearch[Math.floor(Math.random()*this.filterSearch.length)]
         this.selectedActivity = randomActivity
         this.showModal()
-      }
+      },
+      setSearchTerm: _debounce(function (e) {
+        this.searchTerm = e.target.value
+      }, 300)
     }
 }
 </script>
@@ -173,5 +198,9 @@ export default {
   width: 22px;
   height: 22px;
   margin: 20px 0px 0px 10px;
+}
+
+.empty-state {
+  margin-top: 20px;
 }
 </style>
