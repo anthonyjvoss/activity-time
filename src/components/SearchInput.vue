@@ -2,31 +2,18 @@
   <div>
     <input 
       type="text"
-      :value="searchTerm"
-      @input="setSearchTerm"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
       placeholder="Enter activity search here..."
     />
   </div>
 </template>
 
 <script>
-import _debounce from 'lodash/debounce'
-
 export default {
   name: 'SearchInput',
-
-  data() {
-    return {
-      searchTerm: ''
-    }
-  },
-  methods: {
-    setSearchTerm: _debounce( function (event) {
-      this.searchTerm = event.target.value
-      console.warn('search', this.searchTerm)
-      this.$emit('input', this.searchTerm)
-    }, 400)
-  },
+  props: ['modelValue'],
+  emits: ['update:modelValue']
 };
 </script>
 
