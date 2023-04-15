@@ -1,5 +1,8 @@
 <template>
-  <div class="card-wrapper">
+  <div 
+    class="card-wrapper"
+    @click="$emit('show-activity', activity)"
+  >
     <div
       class="activity-name"
     >

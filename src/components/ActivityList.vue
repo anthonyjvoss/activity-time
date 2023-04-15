@@ -2,10 +2,18 @@
     <div class="activities-list">
         <h2>{{ activityType }} Activities</h2>
         <Info :msg="activityMsg" />
-        <SearchInput 
-          v-bind="searchTerm"
-          class="activity-search"
-        />
+        <div class="search-container">
+          <SearchInput 
+            v-bind="searchTerm"
+            class="activity-search"
+          />
+          <img 
+            @click="getRandomActivity"
+            src="../assets/pokeball.png"
+            class="random-image"
+            title="Click for a random activity"
+          />
+        </div>
         <div
           class="activity-tags"
         >
@@ -25,8 +33,16 @@
             <ActivityCard 
               :activity="activity"
               :activity-tags="activityTags"
+              @show-activity="setSelectedActivity"
             />
         </div>
+        <ActivityModal 
+          v-if="isModalVisible"
+          @close="closeModal"
+          :key="selectedActivity.id"
+          :activity="selectedActivity"
+          :activity-tags="activityTags"
+        />
     </div>
 </template>
 
@@ -35,6 +51,7 @@ import Info from './Info.vue'
 import ActivityCard from './ActivityCard.vue'
 import ActivityTagPill from './ActivityTagPill.vue'
 import SearchInput from './SearchInput.vue'
+import ActivityModal from './modals/ActivityModal.vue'
 
 export default {
     props: {
@@ -59,12 +76,15 @@ export default {
         Info,
         ActivityCard,
         ActivityTagPill,
-        SearchInput
+        SearchInput,
+        ActivityModal
     },
     data() {
       return {
         searchTerm: '',
-        tagFilters: []
+        tagFilters: [],
+        isModalVisible: false,
+        selectedActivity: ''
       }
     },
     computed: {
@@ -96,6 +116,21 @@ export default {
         } else if (selected && !this.tagFilters.includes(tagName)) {
           this.tagFilters.push(tagName)
         }
+      },
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      },
+      setSelectedActivity(activity) {
+        this.selectedActivity = activity
+        this.showModal()
+      },
+      getRandomActivity() {
+        let randomActivity = this.filterSearch[Math.floor(Math.random()*this.filterSearch.length)]
+        this.selectedActivity = randomActivity
+        this.showModal()
       }
     }
 }
@@ -125,5 +160,18 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.random-image {
+  width: 22px;
+  height: 22px;
+  margin: 20px 0px 0px 10px;
 }
 </style>
