@@ -173,14 +173,6 @@ export default {
   margin-top: 20px;
 }
 
-:deep .activity-search input{
-  border-style: none;
-  width: 200px;
-  height: 20px;
-  margin-top: 20px;
-  padding-left: 10px;
-}
-
 .activity-tags {
   display: flex;
   justify-content: center;
