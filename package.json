@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-vue": "^2.2.0",
     "@supabase/supabase-js": "^2.14.0",
     "lodash": "^4.17.21",
     "sass": "^1.56.1",
