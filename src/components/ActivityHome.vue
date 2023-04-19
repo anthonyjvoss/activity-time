@@ -63,9 +63,6 @@ export default {
         return activity.type === this.selected_activity
       })
     }
-  },
-  mounted() {
-    console.warn('Mounted App')
   }
 }
 

@@ -1,8 +1,8 @@
 <template>
   <div class="topnav">
-    <a href="/activities" class="header-link">
+    <router-link to="/activities" class="header-link">
       <h1 class="main-header">{{ header }}</h1>
-    </a>
+    </router-link>
   </div>
   <router-view></router-view>
 </template>
