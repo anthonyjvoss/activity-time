@@ -1,5 +1,24 @@
 <template>
   <div>
+    <div class="user-toolbar">
+      <router-link
+        to="/profile"
+        custom
+        v-slot="{ navigate }"
+      >
+        <button
+          @click="navigate"
+          role="link"
+        >
+            Profile
+        </button>
+      </router-link>
+      <button
+        @click="logout"
+      >
+        Logout
+      </button>
+    </div>
     <ActivitySelect 
       @change="setActivity"
       :activity-types="activityTypes"
@@ -62,6 +81,13 @@ export default {
       this.activityData = this.allData.filter(activity => {
         return activity.type === this.selected_activity
       })
+    },
+    logout() {
+      this.$auth0.logout({ 
+        logoutParams: { 
+          returnTo: window.location.origin 
+        } 
+      })
     }
   }
 }
@@ -85,5 +111,11 @@ export default {
   border-color: grey;
   border-radius: 30px;
   padding: 10px;
+}
+
+.user-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 </style>
