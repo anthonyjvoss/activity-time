@@ -2,16 +2,21 @@
   <div class="landing-banner">
     Welcome to Activity Time
   </div>
+  <button
+    @click="login"
+  >
+    Login
+  </button>
 </template>
 
 <script>
 export default {
   name: 'ActivityTimeHome',
-  data() {
-    return {
-      
-    };
-  },
+  methods: {
+    login() {
+      this.$auth0.loginWithRedirect();
+    }
+  }
 };
 </script>
 
