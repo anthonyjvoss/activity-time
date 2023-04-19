@@ -30,6 +30,11 @@ export default {
   width: 200px;
   height: 20px;
   padding-left: 10px;
+  -webkit-appearance: searchfield;
+}
+
+*::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
 }
 
 </style>
