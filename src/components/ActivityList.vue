@@ -33,14 +33,15 @@
         </div>
         <div 
           v-else  
-          v-for="activity in filterSearch" 
-          :key="activity.id"
-          class="activity-wrapper"
+          class="activity-grid"
         >
-            <ActivityCard 
+            <ActivityCard
+              v-for="activity in filterSearch"
+              :key="activity.id"
               :activity="activity"
               :activity-tags="activityTags"
               @show-activity="setSelectedActivity"
+              class="activity-wrapper"
             />
         </div>
         <ActivityModal 
@@ -166,7 +167,7 @@ export default {
   border: lightblue 1px solid;
   border-radius: 4px;
   padding: 10px 10px 20px 10px;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 .activity-wrapper {
@@ -194,5 +195,12 @@ export default {
 
 .empty-state {
   margin-top: 20px;
+}
+
+.activity-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>
