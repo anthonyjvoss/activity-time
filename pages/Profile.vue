@@ -15,9 +15,9 @@ export default {
 
   data() {
     return {
-      user: this.$auth0.user,
-      isAuthenticated: this.$auth0.isAuthenticated,
-      isLoading: this.$auth0.isLoading,
+      user: this.$auth0?.user,
+      isAuthenticated: this.$auth0?.isAuthenticated,
+      isLoading: this.$auth0?.isLoading,
     };
   },
 

@@ -3,14 +3,9 @@
     <div class="user-toolbar">
       <nuxt-link
         to="/profile"
-        custom
-        v-slot="{ navigate }"
       >
-        <button
-          @click="navigate"
-          role="link"
-        >
-            Profile
+        <button role="link">
+          Profile
         </button>
       </nuxt-link>
       <button
@@ -35,9 +30,9 @@
 </template>
 
 <script>
-import ActivitySelect from './ActivitySelect.vue'
-import ActivityList from './ActivityList.vue'
-import dataService from '../services/dataService'
+import ActivitySelect from '~/src/components/ActivitySelect.vue'
+import ActivityList from '~/src/components/ActivityList.vue'
+import dataService from '~/src/services/dataService'
 import _ from 'lodash'
 
 export default {

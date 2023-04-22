@@ -1,26 +1,21 @@
 <template>
   <div id="app">
     <div class="topnav">
-      <nuxt-link to="/activities" class="header-link">
+      <nuxt-link to="/" class="header-link">
         <h1 class="main-header">{{ header }}</h1>
       </nuxt-link>
     </div>
-    <ActivityHome />
+    <NuxtPage></NuxtPage>
   </div>
 </template>
 
 <script>
-import ActivityHome from './src/components/ActivityHome.vue'
-
 export default {
   data() {
     return {
       header: 'Activity Time'
     }
   },
-  components: {
-    ActivityHome
-  }
 }
 </script>
 
