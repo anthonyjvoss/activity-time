@@ -1,9 +1,11 @@
 <template>
-  <h2>
-    Profile
-  </h2>
   <div>
-    User: {{ user }}
+    <h2>
+      Profile
+    </h2>
+    <div>
+      User: {{ user }}
+    </div>
   </div>
 </template>
 

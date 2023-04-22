@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="user-toolbar">
-      <router-link
+      <nuxt-link
         to="/profile"
         custom
         v-slot="{ navigate }"
@@ -12,7 +12,7 @@
         >
             Profile
         </button>
-      </router-link>
+      </nuxt-link>
       <button
         @click="logout"
       >

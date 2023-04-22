@@ -1,22 +1,36 @@
 <template>
-  <div class="topnav">
-    <router-link to="/activities" class="header-link">
-      <h1 class="main-header">{{ header }}</h1>
-    </router-link>
+  <div id="app">
+    <div class="topnav">
+      <nuxt-link to="/activities" class="header-link">
+        <h1 class="main-header">{{ header }}</h1>
+      </nuxt-link>
+    </div>
+    <ActivityHome />
   </div>
-  <router-view></router-view>
 </template>
 
 <script>
+import ActivityHome from './src/components/ActivityHome.vue'
 
 export default {
   data() {
     return {
       header: 'Activity Time'
     }
+  },
+  components: {
+    ActivityHome
   }
 }
 </script>
+
+<style global>
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+</style>
 
 <style scoped>
 .logo {
