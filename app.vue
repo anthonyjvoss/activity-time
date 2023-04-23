@@ -2,7 +2,7 @@
   <div id="app">
     <header class="topnav">
       <nav class="flex flex-row py-2 px-4 gap-4 items-center">
-        <nuxt-link to="/">
+        <nuxt-link to="/activityhome">
           <h1 class="main-header">{{ header }}</h1>
         </nuxt-link>
         <ul class="flex flex-1 justify-end gap-x-10">
