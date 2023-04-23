@@ -27,8 +27,8 @@ export default {
 }
 .input-search {
   border-style: none;
-  width: 200px;
-  height: 20px;
+  width: 220px;
+  height: 24px;
   padding-left: 10px;
   -webkit-appearance: searchfield;
 }
