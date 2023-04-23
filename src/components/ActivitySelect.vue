@@ -1,11 +1,10 @@
 <template>
-    <div>
-        <h2>Select an Activity Type</h2>
+    <div class="mt-4">
+        <h2 class="mb-2">Select an Activity Type</h2>
         <select 
           v-model="activity_selected"
           class="activity-select"
         >
-            <option disabled value="">Please select an activity type</option>
             <option v-for="actType in activityTypes" :key="actType" :value="actType">
               {{ actType }}
             </option>
@@ -37,5 +36,6 @@
     .activity-select {
       font-size: 16px;
       color: #FFFFFF;
+      width: 160px;
     }
 </style>

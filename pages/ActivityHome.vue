@@ -1,19 +1,5 @@
 <template>
   <div>
-    <div class="user-toolbar">
-      <nuxt-link
-        to="/profile"
-      >
-        <button role="link">
-          Profile
-        </button>
-      </nuxt-link>
-      <button
-        @click="logout"
-      >
-        Logout
-      </button>
-    </div>
     <ActivitySelect 
       @change="setActivity"
       :activity-types="activityTypes"

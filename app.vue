@@ -1,10 +1,20 @@
 <template>
   <div id="app">
-    <div class="topnav">
-      <nuxt-link to="/" class="header-link">
-        <h1 class="main-header">{{ header }}</h1>
-      </nuxt-link>
-    </div>
+    <header class="topnav">
+      <nav class="flex flex-row py-2 px-4 gap-4 items-center">
+        <nuxt-link to="/activityhome">
+          <h1 class="main-header">{{ header }}</h1>
+        </nuxt-link>
+        <ul class="flex flex-1 justify-end gap-x-10">
+          <nuxt-link to="/profile">
+            Profile
+          </nuxt-link>
+          <nuxt-link to="/">
+            Logout
+          </nuxt-link>
+        </ul>
+      </nav>
+    </header>
     <NuxtPage></NuxtPage>
   </div>
 </template>
@@ -45,11 +55,6 @@ export default {
   border-style: solid;
   border-radius: 6px;
 }
-
-.header-link {
-  color: #FFFFFFDE;
-}
-
 .topnav {
   overflow: hidden;
   background-color: #877e7e;
