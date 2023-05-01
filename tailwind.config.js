@@ -1,17 +1,16 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+{
   content: [
-    "./src/components/**/*.{js,vue,ts}",
-    "./src/components/*.{js,vue,ts}",
-    "./src/layouts/**/*.vue",
-    "./src/pages/**/*.vue",
-    "./src/pages/*.vue",
-    "./src/plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
-    "./app.vue",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+    `~/components/**/*.{vue,js,ts}`,
+    `~/components/*.{vue,js,ts}`,
+    `~/layouts/**/*.vue`,
+    `~/pages/**/*.vue`,
+    `~/pages/*.vue`,
+    `~/composables/**/*.{js,ts}`,
+    `~/plugins/**/*.{js,ts}`,
+    `~/utils/**/*.{js,ts}`,
+    `~/App.{js,ts,vue}`,
+    `~/app.{js,ts,vue}`,
+    `~/Error.{js,ts,vue}`,
+    `~/error.{js,ts,vue}`
+  ]
 }

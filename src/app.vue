@@ -5,13 +5,16 @@
         <nuxt-link to="/activityhome">
           <h1 class="main-header">{{ header }}</h1>
         </nuxt-link>
-        <ul class="flex flex-1 justify-end gap-x-10">
-          <nuxt-link to="/profile">
+        <ul class="flex flex-col mr-4 flex-1 justify-end gap-x-10 items-end md:items-center md:flex-row md:mr-0">
+          <nuxt-link class="text-white text-lg" to="/profile">
             Profile
           </nuxt-link>
-          <nuxt-link to="/">
+          <button
+            class="logout-link text-white text-lg"
+            @click="client.auth.signOut()"
+          >
             Logout
-          </nuxt-link>
+          </button>
         </ul>
       </nav>
     </header>
@@ -19,14 +22,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      header: 'Activity Time'
-    }
-  },
-}
+<script setup>
+const client = useSupabaseAuthClient()
+const header = 'Activity Time'
 </script>
 
 <style global>
@@ -37,7 +35,7 @@ export default {
 }
 </style>
 
-<style scoped>
+<style scoped lang="scss">
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -58,5 +56,10 @@ export default {
 .topnav {
   overflow: hidden;
   background-color: #877e7e;
+}
+
+.logout-link {
+  background: none;
+  padding: 0;
 }
 </style>
