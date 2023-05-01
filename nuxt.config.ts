@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  srcDir: 'src/',
   modules: ['@nuxtjs/supabase','@nuxtjs/tailwindcss'],
   tailwindcss: {
-    cssPath:  '~/src/assets/css/main.css',
-    configPath: '~/tailwind.config.ts'
+    cssPath:  '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js'
   }
 })

@@ -1,6 +1,6 @@
 <template>
-    <div class="mt-4">
-        <h2 class="mb-2">Select an Activity Type</h2>
+    <div class="mt-4 text-xl text-emerald-500">
+        <div class="mb-2">Select an Activity Type</div>
         <select 
           v-model="activity_selected"
           class="activity-select"

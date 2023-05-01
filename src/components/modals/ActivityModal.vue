@@ -12,12 +12,13 @@
         </button>
       </header>
 
-      <div class="activity-tags">
+      <div class="activity-tags gap-4">
         <ActivityTagPill 
           v-for="tag in tagList"
           :key="tag.id"
           :tag-label="tag.tagName"
           :tag-color="tag.tagColor"
+          class="selected"
         />
       </div>
 

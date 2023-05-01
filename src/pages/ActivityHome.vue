@@ -17,8 +17,8 @@
 
 <script setup>
 const client = useSupabaseClient()
-import ActivitySelect from '~/src/components/ActivitySelect.vue'
-import ActivityList from '~/src/components/ActivityList.vue'
+import ActivitySelect from '~/components/ActivitySelect.vue'
+import ActivityList from '~/components/ActivityList.vue'
 import _ from 'lodash'
 
 let selected_activity = ref('')

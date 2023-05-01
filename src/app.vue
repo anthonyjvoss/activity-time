@@ -5,12 +5,12 @@
         <nuxt-link to="/activityhome">
           <h1 class="main-header">{{ header }}</h1>
         </nuxt-link>
-        <ul class="flex flex-1 justify-end gap-x-10">
-          <nuxt-link to="/profile">
+        <ul class="flex flex-col mr-4 flex-1 justify-end gap-x-10 items-end md:items-center md:flex-row md:mr-0">
+          <nuxt-link class="text-white text-lg" to="/profile">
             Profile
           </nuxt-link>
           <button
-            class="logout-link"
+            class="logout-link text-white text-lg"
             @click="client.auth.signOut()"
           >
             Logout
@@ -35,7 +35,7 @@ const header = 'Activity Time'
 }
 </style>
 
-<style scoped>
+<style scoped lang="scss">
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -60,5 +60,6 @@ const header = 'Activity Time'
 
 .logout-link {
   background: none;
+  padding: 0;
 }
 </style>

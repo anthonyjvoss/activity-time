@@ -1,6 +1,6 @@
 <template>
     <div class="activities-list">
-        <h2>{{ activityType }} Activities</h2>
+        <h2 class="text-xl">{{ activityType }} Activities</h2>
         <Info :msg="activityMsg" />
         <div class="search-container">
           <SearchInput 
@@ -15,7 +15,7 @@
           />
         </div>
         <div
-          class="activity-tags"
+          class="activity-tags gap-2"
         >
           <ActivityTagPill 
             v-for="tag in tagList"
@@ -41,7 +41,7 @@
               :activity="activity"
               :activity-tags="activityTags"
               @show-activity="setSelectedActivity"
-              class="activity-wrapper"
+              class="m-8"
             />
         </div>
         <ActivityModal 
@@ -166,12 +166,8 @@ export default {
 .activities-list {
   border: lightblue 1px solid;
   border-radius: 4px;
-  padding: 10px 10px 20px 10px;
+  padding: 10px 60px 20px 60px;
   margin: 20px;
-}
-
-.activity-wrapper {
-  margin-top: 20px;
 }
 
 .activity-tags {
