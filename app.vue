@@ -9,9 +9,12 @@
           <nuxt-link to="/profile">
             Profile
           </nuxt-link>
-          <nuxt-link to="/">
+          <button
+            class="logout-link"
+            @click="client.auth.signOut()"
+          >
             Logout
-          </nuxt-link>
+          </button>
         </ul>
       </nav>
     </header>
@@ -19,14 +22,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      header: 'Activity Time'
-    }
-  },
-}
+<script setup>
+const client = useSupabaseAuthClient()
+const header = 'Activity Time'
 </script>
 
 <style global>
@@ -58,5 +56,9 @@ export default {
 .topnav {
   overflow: hidden;
   background-color: #877e7e;
+}
+
+.logout-link {
+  background: none;
 }
 </style>

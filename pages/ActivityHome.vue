@@ -15,62 +15,59 @@
   </div>
 </template>
 
-<script>
+<script setup>
+const client = useSupabaseClient()
 import ActivitySelect from '~/src/components/ActivitySelect.vue'
 import ActivityList from '~/src/components/ActivityList.vue'
-import dataService from '~/src/services/dataService'
 import _ from 'lodash'
 
-export default {
-  data () {
-    return {
-     selected_activity: '',
-     activityData: {},
-     allData: {},
-     activityTypes: [],
-     activityTags: []
-    }
-  },
-  components: {
-    ActivitySelect,
-    ActivityList
-  },
-  async created() {
-    try{
-      this.allData = await dataService.getActivityData()
-      this.activityTypes = Array.from(new Set(this.allData.map(d => d.type)))
-      this.activityTags = await dataService.getActivityTags()
-    } catch(err) {
-      console.error(err)
-    }
-  },
-  computed: {
-    activityMsg() {
-      switch(this.selected_activity) {
-        case 'Independent':
-          return 'Activities that I can do by myself.'
-        case 'Guided':
-          return 'Activites that I can do with someone.'
-        case 'Parent Night':
-          return 'Activities that I can do on parent night.'
-      }
-    }
-  },
-  methods: {
-    setActivity (val) {
-      this.selected_activity = val.target.value
-      this.activityData = this.allData.filter(activity => {
-        return activity.type === this.selected_activity
-      })
-    },
-    logout() {
-      this.$auth0.logout({ 
-        logoutParams: { 
-          returnTo: window.location.origin 
-        } 
-      })
-    }
+let selected_activity = ref('')
+let activityData = ref({})
+
+const { data: allData } = await useAsyncData('allData', async () => {
+  const { data } = await client
+    .from('activities')
+    .select('*')
+    .order('id')
+
+  return data
+})
+
+const { data: activityTags } = await useAsyncData('activityTags', async () => {
+  const { data } = await client
+    .from('activityTags')
+    .select('*')
+
+  return data
+})
+
+const activityMsg = computed(() => {
+  switch(selected_activity) {
+    case 'Independent':
+      return 'Activities that I can do by myself.'
+    case 'Guided':
+      return 'Activites that I can do with someone.'
+    case 'Parent Night':
+      return 'Activities that I can do on parent night.'
   }
+})
+
+const activityTypes = computed(() => {
+  return Array.from(new Set(allData.value.map(d => d.type)))
+})
+
+const setActivity = (val) => {
+  console.warn('allData', allData.value)
+  selected_activity.value = val.target.value
+  activityData.value = allData.value.filter(activity => {
+    return activity.type === selected_activity.value
+  })
+  console.warn({
+    sel: selected_activity,
+    dat: activityData,
+    msg: activityMsg.value,
+    tags: activityTags.value
+  })
 }
 
 </script>
