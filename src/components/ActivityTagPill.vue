@@ -30,6 +30,10 @@ export default {
     variant: {
       type: String,
       default: 'button'
+    },
+    isModalView: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -43,7 +47,7 @@ export default {
         border: `${this.tagColor} 1px solid`
       }
 
-      if (this.isSelected || this.variant === 'dot') {
+      if (this.isSelected || this.variant === 'dot' || this.isModalView) {
         style['background-color'] = this.tagColor
       } else {
         style['background-color'] = '#1a1a1a'
