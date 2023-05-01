@@ -1,7 +1,7 @@
 <template>
   <div class="modal-backdrop">
     <div class="modal" v-click-away="close" >
-      <header class="modal-header">
+      <header class="modal-header text-lg">
         {{ activity.name }}
         <button
           type="button"
@@ -18,7 +18,7 @@
           :key="tag.id"
           :tag-label="tag.tagName"
           :tag-color="tag.tagColor"
-          class="selected"
+          :is-modal-view="true"
         />
       </div>
 
