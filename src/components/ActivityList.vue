@@ -164,7 +164,7 @@ export default {
 
 <style lang="scss" scoped>
 .activities-list {
-  border: lightblue 1px solid;
+  border: #add8e6 1px solid;
   border-radius: 4px;
   padding: 10px 60px 20px 60px;
   margin: 20px;
