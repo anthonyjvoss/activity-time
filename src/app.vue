@@ -56,6 +56,7 @@ const header = 'Activity Time'
 .topnav {
   overflow: hidden;
   background-color: #877e7e;
+  border-bottom: #add8e6 2px solid;
 }
 
 .logout-link {
