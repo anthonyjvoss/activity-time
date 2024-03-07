@@ -53,7 +53,8 @@ const activityMsg = computed(() => {
 })
 
 const activityTypes = computed(() => {
-  return Array.from(new Set(allData.value.map(d => d.type)))
+  if (allData.value && allData.value.length) return Array.from(new Set(allData.value.map(d => d.type)))
+  return []
 })
 
 const setActivity = (val) => {
